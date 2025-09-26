@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  Lista de Autores
+{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1>Autores</h1>
+        <a class="btn btn-primary mb-3" href="{% url 'autor_create' %}">Crear Autor</a>
+
+        {% if autores %}
+          <ul class="list-group">
+            {% for autor in autores %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  <strong>{{ autor.nombre }}</strong> — {{ autor.especialidad }}
+                </div>
+                <div>
+                  <a class="btn btn-sm btn-warning" href="{% url 'autor_update' autor.pk %}">Editar</a>
+                  <a class="btn btn-sm btn-danger" href="{% url 'autor_delete' autor.pk %}">Eliminar</a>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No hay autores registrados.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

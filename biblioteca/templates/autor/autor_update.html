@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+  Editar Autor
+{% endblock %}
+
+{% block content %}
+  <h2>Editar Autor</h2>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+          <a href="{% url 'autor_list' %}">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

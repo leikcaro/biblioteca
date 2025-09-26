@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center" style="height: 50vh;">
+    <div class="text-center">
+        <h1>Bienvenido al sistema de la Biblioteca LC</h1>
+        <p>En este sistema podrás solicitar libros y llevar un control de los libros que has solicitado.</p>
+        <p>Para poder solicitar libros, debes iniciar sesión o registrarte si no tienes una cuenta.</p>
+        <p>Si ya tienes una cuenta, inicia sesión <a href="{% url 'login' %}">aquí</a>.</p>
+    </div>
+</div>
+{% endblock %}

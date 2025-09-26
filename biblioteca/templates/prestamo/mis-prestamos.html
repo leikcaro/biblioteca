@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Mis Préstamos{% endblock title %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>Mis Préstamos</h1>
+      {% if prestamos %}
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Libro</th>
+              <th>Fecha Préstamo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prestamo in prestamos %}
+              <tr>
+                <td>{{ prestamo.libro }}</td>
+                <td>{{ prestamo.fecha_prestamo }}</td>
+                <td>
+                  <!-- Devolución (borrar) -->
+                  <a href="{% url 'prestamo_delete' prestamo.pk %}" class="btn btn-sm btn-danger">
+                    Devolver
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No tienes préstamos actualmente.</p>
+      {% endif %}
+      <a href="{% url 'prestamo_list' %}" class="btn btn-secondary">Ver todos los préstamos (Admin)</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

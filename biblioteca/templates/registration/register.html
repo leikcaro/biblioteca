@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Registro de Usuarios{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 120vh;">
+    <div class="card p-4" style="width: 100%; max-width: 500px;">
+        <h1 class="text-center">Registro de Usuarios</h1>
+        <h2 class="text-center">Regístrese y solicite libros desde ya!</h2>
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="text-end">
+                <input type="submit" class="btn btn-primary" value="Enviar">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

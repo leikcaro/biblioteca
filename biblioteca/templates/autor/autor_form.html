@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Crear Autor{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
+  <div class="card p-4" style="width: 100%; max-width: 600px;">
+    <h1>Crear Autor</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-secondary">Guardar</button>
+    </form>
+    <br>
+    <a href="{% url 'autor_list' %}">Volver</a>
+    </div>
+</div>
+
+{% endblock %}
+
