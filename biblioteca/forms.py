@@ -8,7 +8,7 @@ class ClienteRegistroForm(forms.ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ['rut', 'nombre', 'email']
+        fields = ['rut', 'nombre', 'email'] # "__all__"
         widgets = {'password': forms.PasswordInput}
         
     
