@@ -6,6 +6,10 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Autor, Cliente, Prestamo
 from django.contrib.auth.views import LoginView, LogoutView #, PasswordChangeView
+#importar loginrequiredmixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+#importar loginrequireddecorator
+from django.contrib.auth.decorators import login_required
 
 #Home
 def home(request):
@@ -14,7 +18,7 @@ def home(request):
 #####Autenticación#####
 
 #Registro
-
+#@login_required
 def register(request):
     if request.method == 'POST':
         form = ClienteRegistroForm(request.POST)
@@ -48,12 +52,12 @@ class CustomLogoutView(LogoutView):
     template_name = 'registration/logged_out.html'
     
 # Vistas para Autor
-class AutorListView(ListView):
+class AutorListView(LoginRequiredMixin, ListView):
     model = Autor
     template_name = 'autor/autor_list.html'
     context_object_name = 'autores'
 
-class AutorCreateView(CreateView):
+class AutorCreateView(LoginRequiredMixin, CreateView):
     model = Autor
     template_name = 'autor/autor_form.html'
     fields = ['nombre', 'especialidad']
